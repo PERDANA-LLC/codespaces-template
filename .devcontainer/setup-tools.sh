@@ -1,21 +1,40 @@
 #!/bin/bash
 set -e
 
-# Update Homebrew
-echo "Updating Homebrew..."
-brew update
+# Reinstall Homebrew
+echo "Reinstalling Homebrew..."
+NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+# Add Homebrew to PATH (for Linux/macOS)
+if [ -d "/home/linuxbrew/.linuxbrew" ]; then
+    eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+elif [ -d "/opt/homebrew" ]; then
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
 
 # Install GitHub CLI (gh)
 echo "Installing GitHub CLI..."
 brew install gh
 
+# Add GitHub CLI to PATH (for Linux/macOS)
+# (Managed by Homebrew shellenv)
+
 # Install Gemini CLI
 echo "Installing Gemini CLI..."
 brew install gemini-cli
 
+# Add Gemini CLI to PATH (for Linux/macOS)
+# (Managed by Homebrew shellenv)
+
 # Install OpenCode CLI
 echo "Installing OpenCode CLI..."
 npm install -g opencode-ai
+
+# Add OpenCode CLI to PATH (for Linux/macOS)
+NPM_GLOBAL_BIN="$(npm prefix -g)/bin"
+if [[ ":$PATH:" != *":$NPM_GLOBAL_BIN:"* ]]; then
+    export PATH="$NPM_GLOBAL_BIN:$PATH"
+fi
 
 # Install Bun (required for Oh My Opencode)
 echo "Installing Bun..."
