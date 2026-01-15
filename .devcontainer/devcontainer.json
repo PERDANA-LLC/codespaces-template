@@ -1,0 +1,19 @@
+{
+    "name": "Codespaces Template",
+    "image": "mcr.microsoft.com/devcontainers/universal:2",
+    "features": {
+        // You can add more features here. The universal image already includes:
+        // - GitHub CLI
+        // - Docker-in-Docker
+        // - Common languages (Node, Python, Go, Java, etc.)
+    },
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                // Add recommended extensions here, e.g.:
+                // "esbenp.prettier-vscode"
+            ]
+        }
+    },
+    "postCreateCommand": "bash .devcontainer/setup-tools.sh"
+}
