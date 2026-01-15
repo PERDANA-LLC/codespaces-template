@@ -115,6 +115,35 @@ add_to_profile 'export PATH="$BUN_INSTALL/bin:$PATH"'
 echo "Installing Oh My Opencode..."
 bunx oh-my-opencode install --no-tui --claude=no --chatgpt=no --gemini=no
 
+
+
+
+
+
+
+
+# ==========================================
+# 1. Shell Profile Detection
+
+# case "$SHELL" in
+#   */zsh) SHELL_PROFILE="$HOME/.zshrc" ;;
+#   */bash) SHELL_PROFILE="$HOME/.bashrc" ;;
+#   *) SHELL_PROFILE="$HOME/.profile" ;;
+# esac
+
+# echo "Detected shell profile: $SHELL_PROFILE"
+
+# add_to_profile() {
+#     local line="$1"
+#     if ! grep -qF "$line" "$SHELL_PROFILE"; then
+#         echo "$line" >> "$SHELL_PROFILE"
+#         echo "Added to profile: $line"
+#     fi
+# }
+# ==========================================
+
+
+
 echo ""
 echo "Tools installation complete!"
 echo "Run 'source $SHELL_PROFILE' to apply changes."
